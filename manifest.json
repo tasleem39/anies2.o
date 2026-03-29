@@ -1,16 +1,12 @@
 {
-  "name": "Anies Restaurant",
-  "short_name": "Anies",
-  "description": "Delicious food from Anies Restaurant",
-  "start_url": "/",
+  "background_color": "#970000",
+  "dir": "ltr",
   "display": "standalone",
-  "background_color": "#ffffff",
-  "theme_color": "#ff6600",
-  "icons": [
-    {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
+  "name": "tasleem39.github",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "tasleem39.github",
+  "start_url": "/",
+  "theme_color": "#e48686",
+  "id": "anies_restaurant"
 }
