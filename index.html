@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anies Restaurant & Catering | Premium Dining in Tirunelveli</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS VARIABLES (Design System) --- */
+        :root {
+            --charcoal: #1C1C1C;
+            --gold: #C8A96A;
+            --cream: #F8F5F0;
+            --red: #8B0000;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Poppins', sans-serif;
+            --transition: all 0.3s ease-in-out;
+        }
+
+        /* --- GLOBAL STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-body); background-color: var(--cream); color: var(--charcoal); line-height: 1.6; }
+        h1, h2, h3 { font-family: var(--font-heading); color: var(--charcoal); }
+        a { text-decoration: none; color: inherit; }
+        section { padding: 5rem 10%; }
+        
+        /* --- BUTTONS --- */
+        .btn { padding: 12px 28px; border-radius: 4px; font-weight: 600; cursor: pointer; transition: var(--transition); border: none; display: inline-block; }
+        .btn-primary { background-color: var(--gold); color: var(--charcoal); }
+        .btn-primary:hover { background-color: #b59555; transform: translateY(-2px); }
+        .btn-secondary { background-color: transparent; border: 2px solid var(--cream); color: var(--cream); }
+        .btn-secondary:hover { background-color: var(--cream); color: var(--charcoal); }
+        .btn-accent { background-color: var(--red); color: white; }
+        .btn-accent:hover { background-color: #6a0000; }
+
+        /* --- NAVIGATION --- */
+        nav { position: fixed; width: 100%; top: 0; background-color: rgba(28, 28, 28, 0.95); padding: 1rem 10%; display: flex; justify-content: space-between; align-items: center; z-index: 1000; backdrop-filter: blur(10px); color: var(--cream); }
+        nav .logo { font-family: var(--font-heading); font-size: 1.8rem; font-weight: 700; color: var(--gold); }
+        nav ul { list-style: none; display: flex; gap: 2rem; }
+        nav ul li a { font-weight: 500; transition: var(--transition); }
+        nav ul li a:hover { color: var(--gold); }
+
+        /* --- HERO SECTION --- */
+        .hero { height: 100vh; background: linear-gradient(rgba(28,28,28,0.7), rgba(28,28,28,0.7)), url('https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=2000&auto=format&fit=crop') center/cover; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; color: var(--cream); padding: 0 10%; }
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--cream); animation: fadeIn 1s ease-in; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; font-weight: 300; }
+        .hero-btns { display: flex; gap: 1rem; }
+
+        /* --- ABOUT SECTION --- */
+        .about { text-align: center; background-color: var(--cream); }
+        .about h2 { font-size: 2.5rem; margin-bottom: 1rem; color: var(--gold); }
+        .about p { max-width: 800px; margin: 0 auto; font-size: 1.1rem; }
+
+        /* --- MENU SECTION --- */
+        .menu { background-color: white; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: 2.5rem; }
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
+        .menu-card { background: var(--cream); border-radius: 8px; overflow: hidden; transition: var(--transition); text-align: center; padding-bottom: 1.5rem; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .menu-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .menu-card img { width: 100%; height: 200px; object-fit: cover; border-bottom: 3px solid var(--gold); }
+        .menu-card h3 { margin: 1rem 0 0.5rem; font-size: 1.2rem; }
+
+        /* --- WHY CHOOSE US & SERVICES --- */
+        .features { background-color: var(--charcoal); color: var(--cream); text-align: center; }
+        .features h2 { color: var(--gold); }
+        .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 3rem; }
+        .feature-item h3 { color: var(--cream); margin-bottom: 0.5rem; }
+
+        /* --- REVIEWS --- */
+        .reviews { text-align: center; background-color: var(--cream); }
+        .review-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); max-width: 600px; margin: 2rem auto; font-style: italic; border-left: 4px solid var(--gold); }
+
+        /* --- CTA BANNER --- */
+        .cta-banner { background-color: var(--red); color: white; text-align: center; padding: 4rem 10%; }
+        .cta-banner h2 { color: white; font-size: 2.5rem; margin-bottom: 1.5rem; }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--charcoal); color: white; padding: 3rem 10%; text-align: center; }
+        footer p { margin-top: 1rem; color: #888; font-size: 0.9rem; }
+
+        /* --- ANIMATIONS & MEDIA QUERIES --- */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @media (max-width: 768px) {
+            nav ul { display: none; /* Add hamburger menu for mobile production */ }
+            .hero h1 { font-size: 2.5rem; }
+            .hero-btns { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Anies</div>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#contact">Location</a></li>
+        </ul>
+        <a href="#menu" class="btn btn-primary">Order Online</a>
+    </nav>
+
+    <section class="hero" id="home">
+        <h1>Experience Flavor Like Never Before</h1>
+        <p>From authentic biryani to global favorites, indulge in a dining experience crafted with passion and taste.</p>
+        <div class="hero-btns">
+            <a href="#contact" class="btn btn-primary">👉 Reserve a Table</a>
+            <a href="#menu" class="btn btn-secondary">👉 Explore Menu</a>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <h2>Where Taste Meets Tradition & Innovation</h2>
+        <p>Anies Restaurant & Catering brings together the richness of traditional flavors and the excitement of global cuisine. Known for its hygienic environment, exceptional service, and delicious dishes, it has become a favorite dining spot in Tirunelveli.</p>
+    </section>
+
+    <section class="menu" id="menu">
+        <div class="section-header">
+            <h2>Our Signature Dishes</h2>
+            <p>Taste the magic of our highly-rated specialties.</p>
+        </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1631515243349-e0cb75fb8d3a?q=80&w=600&auto=format&fit=crop" alt="Authentic Biryani">
+                <h3>Authentic Biryani</h3>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?q=80&w=600&auto=format&fit=crop" alt="Chicken Tikka Masala">
+                <h3>Chicken Tikka Masala</h3>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1628840042765-356cda07504e?q=80&w=600&auto=format&fit=crop" alt="Arabian Mandhi">
+                <h3>Arabian Mandhi</h3>
+            </div>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=600&auto=format&fit=crop" alt="Oreo Waffles">
+                <h3>Oreo Waffles</h3>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="#" class="btn btn-primary">👉 View Full Menu</a>
+        </div>
+    </section>
+
+    <section class="features" id="services">
+        <h2>Why Choose Us</h2>
+        <div class="features-grid">
+            <div class="feature-item">
+                <h3>🍗 Exceptional Taste</h3>
+                <p>Secret recipes and fresh ingredients.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🧼 Hygienic Dining</h3>
+                <p>Immaculate environment for your safety.</p>
+            </div>
+            <div class="feature-item">
+                <h3>💰 Affordable Premium</h3>
+                <p>Luxury dining without the luxury price tag.</p>
+            </div>
+            <div class="feature-item">
+                <h3>🚀 Fast Service</h3>
+                <p>Quick dine-in and no-contact delivery.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="reviews">
+        <h2>Loved by Tirunelveli</h2>
+        <p>4.3 ⭐ (1100+ reviews)</p>
+        <div class="review-card">
+            "Food was fantastic and service was excellent. Mandhi is an absolute must-try! Clean dining and great value for money."
+        </div>
+    </section>
+
+    <section class="cta-banner">
+        <h2>Hungry? Let’s Fix That.</h2>
+        <div class="hero-btns" style="justify-content: center;">
+            <a href="#menu" class="btn" style="background: white; color: var(--red);">👉 Order Now</a>
+            <a href="#contact" class="btn btn-primary">👉 Book Your Table</a>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2 style="color: var(--gold); margin-bottom: 1rem;">Anies Restaurant & Catering</h2>
+        <p>📍 Rahmath Nagar, near Income Tax Office, Tirunelveli</p>
+        <p>🕒 Open daily – Closes at 11 PM</p>
+        <br>
+        <a href="tel:+910000000000" class="btn btn-primary">👉 Call Now</a>
+        <p style="margin-top: 3rem;">Designed for a premium dining experience. © 2026 Anies Restaurant.</p>
+    </footer>
+
+</body>
+</html>
